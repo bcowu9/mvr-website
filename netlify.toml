@@ -1,0 +1,4 @@
+# Netlify configuration for Miami Valley Recovery
+# This static site has no build step — files are served as-is.
+[build]
+  publish = "."
