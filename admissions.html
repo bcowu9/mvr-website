@@ -93,7 +93,7 @@
   .apply-copy .reassure svg{flex:none;margin-top:3px;color:var(--green)}
   .form-card{background:var(--white);border-radius:20px;padding:38px;box-shadow:var(--shadow);border:1px solid rgba(6,61,34,.06)}
   .jotform-slot{min-height:500px;height:auto}
-  .jotform-slot iframe{width:100%!important;border:none;border-radius:12px}
+  .jotform-slot iframe{width:100%!important;min-height:1400px;height:1400px!important;border:none;border-radius:12px;display:block}
   .jotform-placeholder{border:2px dashed rgba(9,147,69,.35);border-radius:12px;padding:40px 24px;text-align:center;color:var(--gray);font-size:.95rem;line-height:1.6}
   .jotform-placeholder strong{color:var(--green-deep);display:block;margin-bottom:8px;font-size:1.05rem}
   /* form accordion */
@@ -389,6 +389,10 @@
         <a href="medication-assisted-treatment.html">Medication-Assisted Treatment</a>
         <a href="buprenorphine-treatment.html">Buprenorphine Treatment</a>
         <a href="suboxone-treatment.html">Suboxone Treatment</a>
+        <a href="sublocade-treatment.html">Sublocade Treatment</a>
+        <a href="brixadi-treatment.html">Brixadi Treatment</a>
+        <a href="vivitrol-treatment.html">Vivitrol Treatment</a>
+        <a href="zubsolv-treatment.html">Zubsolv Treatment</a>
         <a href="alcohol-addiction-treatment.html">Alcohol Addiction Treatment</a>
         <a href="drug-addiction-treatment.html">Drug Addiction Treatment</a>
         <a href="mothers-on-buprenorphine.html">M.O.B. Program</a>
@@ -445,6 +449,24 @@
         .catch(function(){ showConfirm(); });
     });
   }
+
+  // Keep embedded JotForms tall enough that they never need their own internal
+  // scrollbar. JotForm's own script sometimes sets a shorter fixed height on the
+  // iframe after it loads (or when the form's steps change) — this watches for
+  // that and re-applies a generous minimum so the whole form is always visible
+  // and the PAGE scrolls past it normally, instead of scrolling inside a tiny box.
+  function enforceJotformHeight(){
+    document.querySelectorAll('.jotform-slot iframe').forEach(function(f){
+      const current = parseInt(f.style.height) || 0;
+      if (current < 1400) {
+        f.style.setProperty('height', '1400px', 'important');
+      }
+      f.style.setProperty('min-height', '1400px', 'important');
+    });
+  }
+  enforceJotformHeight();
+  setInterval(enforceJotformHeight, 500);
+  new MutationObserver(enforceJotformHeight).observe(document.body, {childList:true, subtree:true, attributes:true, attributeFilter:['style']});
 
 </script>
 </body>
