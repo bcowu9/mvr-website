@@ -1,0 +1,5 @@
+# robots.txt for Miami Valley Recovery
+User-agent: *
+Allow: /
+
+Sitemap: https://www.miamivalleyrecovery.com/sitemap.xml

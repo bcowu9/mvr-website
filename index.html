@@ -16,13 +16,18 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MedicalClinic",
+  "@type": ["MedicalClinic","MedicalBusiness","LocalBusiness"],
   "name": "Miami Valley Recovery",
-  "description": "CARF-accredited outpatient drug and alcohol addiction treatment center in Dayton, Ohio.",
+  "alternateName": "Miami Valley Recovery, LLC",
+  "description": "CARF-accredited, Ohio DBH / OhioMHAS-certified outpatient drug and alcohol addiction treatment center in Dayton, Ohio. Offering Suboxone, medication-assisted treatment (MAT), and outpatient counseling. Most insurance and all Ohio Medicaid accepted.",
   "url": "https://www.miamivalleyrecovery.com/",
+  "logo": "https://www.miamivalleyrecovery.com/mvr-logo.png",
+  "image": "https://www.miamivalleyrecovery.com/mvr-logo.png",
   "telephone": "+1-937-401-8672",
   "faxNumber": "+1-937-853-8029",
   "email": "info@miamivalleyrecovery.com",
+  "foundingDate": "2017",
+  "priceRange": "$$",
   "medicalSpecialty": "Addiction",
   "address": {
     "@type": "PostalAddress",
@@ -33,12 +38,40 @@
     "addressCountry": "US"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 39.747226, "longitude": -84.199403 },
+  "hasMap": "https://maps.google.com/maps?q=1+Elizabeth+Place+Dayton+OH+45417",
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
     "opens": "08:00", "closes": "16:30"
   }],
-  "areaServed": "Dayton, Montgomery County, Ohio"
+  "areaServed": [
+    { "@type": "City", "name": "Dayton" },
+    { "@type": "City", "name": "Kettering" },
+    { "@type": "City", "name": "Huber Heights" },
+    { "@type": "City", "name": "Trotwood" },
+    { "@type": "City", "name": "West Carrollton" },
+    { "@type": "City", "name": "Riverside" },
+    { "@type": "City", "name": "Middletown" },
+    { "@type": "AdministrativeArea", "name": "Montgomery County, Ohio" }
+  ],
+  "availableService": [
+    { "@type": "MedicalProcedure", "name": "Outpatient Addiction Treatment" },
+    { "@type": "MedicalProcedure", "name": "Medication-Assisted Treatment (MAT)" },
+    { "@type": "MedicalProcedure", "name": "Suboxone Treatment" },
+    { "@type": "MedicalProcedure", "name": "Alcohol Addiction Treatment" },
+    { "@type": "MedicalProcedure", "name": "Drug Addiction Treatment" },
+    { "@type": "MedicalProcedure", "name": "Mothers on Buprenorphine (M.O.B.) Program" }
+  ],
+  "hasCredential": [
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "CARF Accreditation" },
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "Ohio DBH / OhioMHAS Certification" },
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "LegitScript Certification" }
+  ],
+  "paymentAccepted": "Ohio Medicaid, Anthem, Cigna, and most major insurance",
+  "currenciesAccepted": "USD",
+  "sameAs": [
+    "https://sober-days.netlify.app"
+  ]
 }
 </script>
 <style>
@@ -273,6 +306,7 @@
       <a href="#services">Services</a>
       <a href="#insurance">Insurance</a>
       <a href="#sober">Sober Days</a>
+      <a href="blog.html">Blog</a>
       <a href="admissions.html">Get Started</a>
     </nav>
     <a class="nav-cta" href="tel:+19374018672">
