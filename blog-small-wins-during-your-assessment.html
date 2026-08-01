@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Drug Addiction Treatment in Dayton, OH | Miami Valley Recovery</title>
-<meta name="description" content="Outpatient drug addiction treatment in Dayton, OH for opioids, heroin & prescription drugs. Combining MAT, therapy & case management. Medicaid & insurance accepted.">
-<link rel="canonical" href="https://www.miamivalleyrecovery.com/drug-addiction-treatment">
-<meta property="og:title" content="Drug Addiction Treatment in Dayton, OH | Miami Valley Recovery">
-<meta property="og:description" content="Outpatient drug addiction treatment in Dayton, OH for opioids, heroin & prescription drugs. Combining MAT, therapy & case management. Medicaid & insurance accepted.">
+<title>The Power of Small Wins During Your Assessment | Miami Valley Recovery</title>
+<meta name="description" content="Every recovery journey starts with small steps. Learn why small wins during your drug and alcohol assessment matter, and how they build the confidence to keep going.">
+<link rel="canonical" href="https://www.miamivalleyrecovery.com/blog-small-wins-during-your-assessment">
+<meta property="og:title" content="The Power of Small Wins During Your Assessment | Miami Valley Recovery">
+<meta property="og:description" content="Every recovery journey starts with small steps. Learn why small wins during your drug and alcohol assessment matter, and how they build the confidence to keep going.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +30,9 @@
   .btn-primary:hover{background:var(--orange-deep);transform:translateY(-2px)}
   .btn-ghost{background:transparent;border-color:currentColor;color:#fff}
   .btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+  .blog-cta .btn-ghost,.article-cta .btn-ghost{color:var(--green-deep);border-color:var(--green)}
+  .blog-cta .btn-ghost:hover,.article-cta .btn-ghost:hover{background:rgba(9,147,69,.1)}
+
   .btn-green{background:var(--green);color:#fff;box-shadow:0 6px 18px -6px rgba(9,147,69,.6)}
   .btn-green:hover{background:#0a7d3b;transform:translateY(-2px)}
   header{position:sticky;top:0;z-index:50;background:rgba(247,245,240,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(6,61,34,.08)}
@@ -133,7 +136,55 @@
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
   :focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
 </style>
-</head>
+<style>
+  .blog-hero{background:linear-gradient(160deg,var(--green),#0a7d3b 70%,var(--green-deep));color:#fff;padding:44px 24px 48px;text-align:center}
+  .blog-hero .kicker{display:inline-flex;align-items:center;gap:8px;color:#ffe4bd;font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+  .blog-hero h1{color:#fff;font-size:clamp(2rem,4vw,2.9rem);margin-bottom:14px}
+  .blog-hero p{color:rgba(255,255,255,.92);max-width:60ch;margin:0 auto;font-size:1.12rem}
+  .blog-wrap{max-width:1080px;margin:0 auto;padding:56px 24px}
+  .post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  @media(max-width:900px){.post-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.post-grid{grid-template-columns:1fr}}
+  .post-card{display:flex;flex-direction:column;background:var(--white);border:1px solid rgba(6,61,34,.08);border-radius:18px;overflow:hidden;transition:transform .18s ease,box-shadow .18s}
+  .post-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .post-card .thumb{height:150px;background:linear-gradient(135deg,var(--green) 0%,#0a7d3b 60%,var(--green-deep));display:flex;align-items:center;justify-content:center;color:#fff}
+  .post-card .thumb svg{width:46px;height:46px;opacity:.9}
+  .post-card .body{padding:24px;display:flex;flex-direction:column;flex:1}
+  .post-card .cat{color:var(--orange-deep);font-weight:600;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+  .post-card h3{font-size:1.2rem;color:var(--green-deep);margin-bottom:10px;line-height:1.3}
+  .post-card p{color:var(--gray);font-size:.95rem;line-height:1.6;flex:1}
+  .post-card .more{margin-top:14px;color:var(--green);font-weight:600;font-size:.95rem;display:inline-flex;align-items:center;gap:6px}
+  .blog-cta{background:var(--ground);border-radius:20px;padding:40px;text-align:center;margin-top:48px}
+  .blog-cta h2{color:var(--green-deep);margin-bottom:10px}
+  .blog-cta p{color:var(--gray);max-width:52ch;margin:0 auto 20px}
+  /* article page */
+  .article{max-width:760px;margin:0 auto;padding:56px 24px}
+  .article .meta{color:var(--gray);font-size:.9rem;margin-bottom:10px}
+  .article .cat{color:var(--orange-deep);font-weight:600;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+  .article h1{color:var(--green-deep);font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.15;margin:8px 0 20px}
+  .article .lede{font-size:1.2rem;color:var(--ink);line-height:1.6;margin-bottom:28px}
+  .article-body h2{color:var(--green-deep);font-size:1.5rem;margin:32px 0 12px}
+  .article-body h3{color:var(--green-deep);font-size:1.2rem;margin:24px 0 8px}
+  .article-body p{color:var(--ink);line-height:1.75;margin-bottom:18px}
+  .article-body ul,.article-body ol{margin:0 0 18px 22px;color:var(--ink);line-height:1.75}
+  .article-body li{margin-bottom:8px}
+  .article-body a{color:var(--green);font-weight:600}
+  .article-cta{background:var(--ground);border-radius:18px;padding:30px;text-align:center;margin-top:40px}
+  .article-cta h3{color:var(--green-deep);margin-bottom:10px}
+  .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--green);font-weight:600;margin-bottom:24px}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BlogPosting",
+  "headline":"The Power of Small Wins During Your Assessment | Miami Valley Recovery",
+  "description":"Every recovery journey starts with small steps. Learn why small wins during your drug and alcohol assessment matter, and how they build the confidence to keep going.",
+  "datePublished":"2026-02-01",
+  "author":{"@type":"Organization","name":"Miami Valley Recovery"},
+  "publisher":{"@type":"Organization","name":"Miami Valley Recovery","logo":{"@type":"ImageObject","url":"https://www.miamivalleyrecovery.com/mvr-logo.png"}},
+  "mainEntityOfPage":"https://www.miamivalleyrecovery.com/blog-small-wins-during-your-assessment"
+}
+</script></head>
 <body>
 <header>
   <div class="nav">
@@ -158,28 +209,49 @@
     </button>
   </div>
 </header>
-<span id="top"></span>
-<section class="hero">
-  <div class="wrap">
-    <span class="eyebrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5z"/></svg> Drug Addiction Treatment · Dayton, OH</span>
-    <h1>Outpatient drug addiction treatment in Dayton</h1>
-    <p class="sub">Compassionate, evidence-based care for opioid, heroin, and prescription drug addiction &mdash; combining medication, therapy, and support to help you reclaim your life.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="admissions.html">Request an assessment <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<article class="article">
+  <a class="back-link" href="blog.html">&larr; All resources</a>
+  <div class="meta"><span class="cat">Getting Started</span> &middot; 2026-02-01</div>
+  <h1>The Power of Small Wins During Your Assessment | Miami Valley Recovery</h1>
+  <p class="lede">Recovery can feel overwhelming when you focus on how far you have to go. At Miami Valley Recovery, we believe every journey toward healing starts with a single step &mdash; and those small steps matter more than you might think.</p>
+  <div class="article-body">
+    <p>When you&rsquo;re facing a <a href="admissions.html">drug and alcohol assessment</a>, it&rsquo;s natural to focus on how far you have to go rather than celebrating where you are today. But the power of small victories lies in their ability to build momentum. Just like a snowball rolling down a hill, each small win adds to your confidence and motivation. These moments of progress, no matter how minor they might seem, create the foundation for lasting change.</p>
+
+    <h2>Why small wins matter during assessment</h2>
+    <p>A drug and alcohol assessment might feel intimidating, but it&rsquo;s filled with opportunities for small victories. Think of it as your chance to show up for yourself. At Miami Valley Recovery, we&rsquo;ve seen countless clients discover their strength through these early wins, and it all starts with recognizing progress in unexpected places.</p>
+    <p>Your first small win might be something as simple as making the appointment &mdash; that phone call took courage. Showing up on time is another victory. Being honest about your struggles during the assessment is huge progress, even if it doesn&rsquo;t feel like it in the moment. If you&rsquo;re not sure what that first visit actually looks like, we&rsquo;ve walked through it step by step in <a href="blog-what-to-expect-first-assessment.html">What to Expect at Your First Assessment</a>.</p>
+
+    <h2>Examples of small wins to celebrate</h2>
+    <p>During your assessment and early recovery journey, watch for these meaningful victories: showing up consistently, since every appointment you keep is a commitment to yourself; asking questions, because curiosity about treatment options shows you&rsquo;re engaged in your own recovery; being honest about your usage, which builds trust with your counselor and leads to a better treatment plan; following through on recommendations, which demonstrates your commitment to change; and connecting with support &mdash; reaching out to family, friends, or support groups is a sign of strength, not weakness.</p>
+    <p>These might seem like basic actions, but they represent significant shifts in mindset and behavior. Each one deserves recognition.</p>
+
+    <h2>How small wins build confidence</h2>
+    <p>Confidence grows through evidence. When you complete small tasks successfully, your brain starts to believe that bigger challenges are possible too. This isn&rsquo;t just positive thinking &mdash; it&rsquo;s how our minds work.</p>
+    <p>Every time you follow through on a commitment to yourself, you&rsquo;re proving that change is possible, and that proof becomes the fuel for bigger transformations. The assessment process itself becomes less intimidating once you realize you&rsquo;ve already accomplished several small but important goals. Over time, your brain begins to rewire itself around success rather than failure. That shift happens gradually, but it&rsquo;s incredibly powerful once it takes hold.</p>
+
+    <h2>Building momentum through daily actions</h2>
+    <p>Recovery isn&rsquo;t built on grand gestures &mdash; it&rsquo;s constructed through daily choices. Small wins create a positive feedback loop that makes the next right choice easier to make. Structure in your morning, even something as simple as making your bed, sets a tone for the day. Choosing a nutritious meal is an act of self-care. Keeping a regular sleep schedule supports your mental health. A short walk counts as taking care of yourself, and a few minutes of mindfulness or deep breathing can build real inner strength.</p>
+    <p>None of these actions will single-handedly resolve addiction, but together they create a lifestyle that supports recovery. Each small choice reinforces your identity as someone who takes care of themselves.</p>
+
+    <h2>Creating your own small-win strategy</h2>
+    <p>Start by identifying what a small win means to you personally. What feels achievable today? What would make you feel proud of yourself, even in a small way? Write down three tiny goals for this week, and make them so small they feel almost too easy &mdash; that&rsquo;s the point. You want to set yourself up for success, not struggle. Maybe your goals are attending your assessment, writing down three questions to ask your counselor, or telling one trusted person about your decision to seek help. Whatever they are, make them specific and achievable.</p>
+
+    <h2>The ripple effect of progress</h2>
+    <p>Small wins don&rsquo;t just impact you &mdash; they influence everyone around you. Family members notice when you start keeping commitments. Friends see the positive changes in your attitude. Your success inspires others who might be struggling with similar challenges of their own. This ripple effect creates additional motivation to keep going: you&rsquo;re not just recovering for yourself, you&rsquo;re showing others what&rsquo;s possible. If someone you love is watching from the outside and wondering how to help, our article on <a href="blog-signs-a-loved-one-needs-help.html">Signs a Loved One May Need Addiction Treatment</a> is a good place for them to start.</p>
+
+    <h2>Moving forward with confidence</h2>
+    <p>Recovery is a marathon, not a sprint. The small wins you achieve during your drug and alcohol assessment set the tone for your entire journey. They prove that change is possible and that you have the strength to build the life you want. At <a href="about.html">Miami Valley Recovery</a>, we understand that big transformations happen through small, consistent steps, and every client who walks through our doors brings their own capacity for these meaningful victories. We&rsquo;re here to help you recognize and celebrate each one along the way.</p>
+    <p>Progress isn&rsquo;t always dramatic, but it&rsquo;s always valuable. Your small wins today are building the foundation for your big victories tomorrow.</p>
+  </div>
+  <div class="article-cta">
+    <h3>We&rsquo;re here when you&rsquo;re ready</h3>
+    <p>Reach out for a confidential assessment or call us directly. There&rsquo;s no pressure &mdash; just help.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-primary" href="admissions.html">Request an assessment <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <a class="btn btn-ghost" href="tel:+19374018672">Call 937.401.8672</a>
     </div>
   </div>
-</section>
-<section class="prose"><div class="wrap"><div class="inner reveal"><h2>Addiction is a disease, not a character flaw</h2><p class="lead">Compassionate, judgment-free treatment for opioid, heroin, and prescription drug addiction.</p><p>Drug addiction changes the way the brain works &mdash; which is exactly why willpower alone so often isn&rsquo;t enough, and why effective treatment makes such a difference. Addiction is a medical condition, and it&rsquo;s treatable.</p><p>At Miami Valley Recovery, we treat people, not labels. Our outpatient program combines medication, therapy, and genuine support to help you address the root causes and build a life in recovery.</p></div></div></section><section class="features"><div class="wrap"><div class="section-head reveal"><div class="kicker">Substances we treat</div><h2>Specialized outpatient care</h2></div><div class="feat-grid"><div class="feat reveal"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div><h3>Opioids &amp; heroin</h3><p>Evidence-based treatment including MAT to reduce cravings and overdose risk.</p></div></div><div class="feat reveal"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div><h3>Prescription drugs</h3><p>Support for dependence on prescription opioids, sedatives, and stimulants.</p></div></div><div class="feat reveal"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div><h3>Fentanyl</h3><p>Care for the realities of today&rsquo;s drug supply, with close medical support.</p></div></div><div class="feat reveal"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div><h3>Co-occurring conditions</h3><p>We address mental health alongside substance use, because they&rsquo;re connected.</p></div></div></div></div></section><section class="phases"><div class="wrap"><div class="section-head reveal"><div class="kicker">Our treatment model</div><h2>More than managing symptoms</h2></div><div class="phase-grid"><div class="phase reveal"><div class="num">1</div><h3>Assess &amp; stabilize</h3><p>A thorough assessment, plus MAT when appropriate to steady cravings and withdrawal.</p></div><div class="phase reveal"><div class="num">2</div><h3>Address the roots</h3><p>Individual and group therapy to work through what&rsquo;s driving the addiction.</p></div><div class="phase reveal"><div class="num">3</div><h3>Build for the long term</h3><p>Skills, support, and case management to sustain recovery over time.</p></div></div></div></section><section class="prose"><div class="wrap"><div class="inner reveal"><p>In 2023, more than 4,400 Ohioans lost their lives to unintentional drug overdose &mdash; over 12 people every day. But there is real hope: overdose deaths in Ohio have now declined two years in a row, driven by expanded access to treatment, medication-assisted therapy, and naloxone. Getting help works, and Miami Valley Recovery is here to help you take that step.</p><p><span style="font-size:.9rem;color:var(--gray)">Source: Ohio Department of Health, 2023 Unintentional Drug Overdose Report.</span></p></div></div></section><section class="xlink"><div class="wrap"><div class="card reveal">
-      <h3>Medication can reduce cravings and overdose risk</h3><p>Learn how medication-assisted treatment supports recovery from opioid and drug addiction.</p>
-      <a class="btn btn-green" href="medication-assisted-treatment.html">Explore MAT <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div></div></section><section class="final"><div class="wrap reveal">
-      <h2>Get help today</h2><p>Reach out for a confidential assessment. Recovery is possible, and it can start now.</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <a class="btn btn-primary" href="admissions.html">Request an assessment <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost" href="tel:+19374018672">Call 937.401.8672</a>
-      </div>
-    </div></section>
+</article>
 <footer id="foot">
   <div class="wrap">
     <div class="crisis">
