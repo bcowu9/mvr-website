@@ -424,8 +424,12 @@
         <label for="c-marijuana">Marijuana <span class="hint">per day</span></label>
         <div class="calc-input-wrap"><span class="dollar">$</span><input type="number" id="c-marijuana" min="0" step="1" inputmode="decimal" placeholder="0"></div>
       </div>
-      <div class="calc-field" style="grid-column:1/-1">
-        <label for="c-pills">Prescription pills (non-prescribed use) <span class="hint">per day</span></label>
+      <div class="calc-field">
+        <label for="c-nicotine">Nicotine (cigarettes, chew) <span class="hint">per day</span></label>
+        <div class="calc-input-wrap"><span class="dollar">$</span><input type="number" id="c-nicotine" min="0" step="1" inputmode="decimal" placeholder="0"></div>
+      </div>
+      <div class="calc-field">
+        <label for="c-pills">Prescription pills (non-prescribed) <span class="hint">per day</span></label>
         <div class="calc-input-wrap"><span class="dollar">$</span><input type="number" id="c-pills" min="0" step="1" inputmode="decimal" placeholder="0"></div>
       </div>
     </div>
@@ -488,9 +492,10 @@
         <tr><td>Meth</td><td>$50&ndash;$150+</td></tr>
         <tr><td>Cocaine</td><td>$60&ndash;$150+</td></tr>
         <tr><td>Marijuana</td><td>$15&ndash;$70+</td></tr>
+        <tr><td>Nicotine (a pack/day, or a can of chew every 1&ndash;2 days)</td><td>$7&ndash;$15+</td></tr>
         <tr><td>Prescription pills (non-prescribed)</td><td>$50&ndash;$200+</td></tr>
       </table>
-      <p style="font-size:.8rem;color:var(--gray);margin-top:12px">These are general estimates based on published cost-of-addiction research and vary widely by region, purity, and tolerance. Enter your own numbers above for a figure that reflects your situation.</p>
+      <p style="font-size:.8rem;color:var(--gray);margin-top:12px">These are general estimates based on published cost-of-addiction research and vary widely by region, purity, and tolerance. Ohio cigarette prices average roughly $7&ndash;$9 per pack; smokeless tobacco runs about $3.50&ndash;$5 per can or pouch. Enter your own numbers above for a figure that reflects your situation.</p>
     </details>
   </div>
 </div>
@@ -513,10 +518,10 @@
 
 <script>
 (function(){
-  var ids = ['alcohol','heroin','fentanyl','meth','cocaine','marijuana','pills'];
+  var ids = ['alcohol','heroin','fentanyl','meth','cocaine','marijuana','nicotine','pills'];
   var labels = {
     alcohol: 'Alcohol', heroin: 'Heroin', fentanyl: 'Fentanyl', meth: 'Meth',
-    cocaine: 'Cocaine', marijuana: 'Marijuana', pills: 'Prescription pills (non-prescribed use)'
+    cocaine: 'Cocaine', marijuana: 'Marijuana', nicotine: 'Nicotine (cigarettes, chew)', pills: 'Prescription pills (non-prescribed use)'
   };
   var MEDICAID_YEARLY_COST = 0;
   var hasData = false;
