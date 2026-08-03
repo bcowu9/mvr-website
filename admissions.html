@@ -99,7 +99,7 @@
   .apply-copy .reassure{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;color:var(--ink);font-size:.99rem}
   .apply-copy .reassure svg{flex:none;margin-top:3px;color:var(--green)}
   .form-card{background:var(--white);border-radius:20px;padding:38px;box-shadow:var(--shadow);border:1px solid rgba(6,61,34,.06)}
-  .jotform-slot{min-height:3200px;height:auto}
+  .jotform-slot{min-height:3200px;height:auto;overscroll-behavior:none}
   .jotform-slot iframe{width:100%!important;min-height:3200px;height:3200px!important;border:none;border-radius:12px;display:block}
   .jotform-placeholder{border:2px dashed rgba(9,147,69,.35);border-radius:12px;padding:40px 24px;text-align:center;color:var(--gray);font-size:.95rem;line-height:1.6}
   .jotform-placeholder strong{color:var(--green-deep);display:block;margin-bottom:8px;font-size:1.05rem}
@@ -484,12 +484,19 @@
   function enforceJotformHeight(){
     document.querySelectorAll('.jotform-slot iframe').forEach(function(f){
       const current = parseInt(f.style.height) || 0;
-      if (current < ADMIT_MIN_HEIGHT) { f.style.setProperty('height', ADMIT_MIN_HEIGHT + 'px', 'important'); }
-      f.style.setProperty('min-height', ADMIT_MIN_HEIGHT + 'px', 'important');
+      // Only touch the style when a real change is needed. Continuously
+      // re-writing the same value (even via setProperty) can cause some
+      // browsers to treat it as a fresh layout event, which can interrupt
+      // an in-progress scroll/trackpad gesture if the cursor happens to be
+      // over the iframe at that moment.
+      if (current < ADMIT_MIN_HEIGHT) {
+        f.style.setProperty('height', ADMIT_MIN_HEIGHT + 'px', 'important');
+        f.style.setProperty('min-height', ADMIT_MIN_HEIGHT + 'px', 'important');
+      }
     });
   }
   enforceJotformHeight();
-  setInterval(enforceJotformHeight, 500);
+  setInterval(enforceJotformHeight, 1000);
   new MutationObserver(enforceJotformHeight).observe(document.body, {childList:true, subtree:true, attributes:true, attributeFilter:['style']});
 
   // JotForm's real embed script posts messages to the parent window as a
