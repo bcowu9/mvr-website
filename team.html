@@ -449,25 +449,31 @@
   function say(html,crisis){typing(true);setTimeout(function(){typing(false);add(html,"bot",!!crisis);},450);}
   function reply(text){var r=answerFor(text);say(r.a,r.crisis);}
   function renderChips(list){chips.innerHTML="";(list||STARTERS).forEach(function(s){var c=document.createElement("div");c.className="chip";c.textContent=s;c.onclick=function(){send(s);};chips.appendChild(c);});}
-  function startSched(){booking={};flow="offer1";say("I'd be glad to help you set up a confidential assessment. 📅<br>The next available time is <b>"+slot1()+"</b>. Would that work for you?");renderChips(YN);}
+  function startSched(){booking={};flow="type";say("I'd be glad to help you set up a confidential assessment. First — would you like a <b>Telehealth</b> (video) assessment or an <b>In-Person</b> assessment?");renderChips(["Telehealth","In-Person"]);}
   function submitBooking(){flow="submitting";var first=escHtml((booking.name||"").split(" ")[0]||"there");say("Thanks, "+first+"! One moment while I send your request… ⏳");
-    fetch("https://formsubmit.co/ajax/"+encodeURIComponent(FORM_TO),{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({_subject:"New assessment request — website chatbot",_template:"table",_captcha:"false",name:booking.name,phone:booking.phone,reason:booking.reason,requested_time:booking.time})})
+    fetch("https://formsubmit.co/ajax/"+encodeURIComponent(FORM_TO),{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({_subject:"New assessment request — website chatbot",_template:"table",_captcha:"false",name:booking.name,phone:booking.phone,reason:booking.reason,assessment_type:booking.type,requested_time:booking.time})})
     .then(function(r){return r.json();}).then(function(d){flow=null;renderChips(STARTERS);
-      if(d&&(d.success===true||d.success==="true")){say("✅ You're all set, "+first+"! We've sent your request for <b>"+escHtml(booking.time)+"</b>. Someone from our team will call <b>"+escHtml(booking.phone)+"</b> to confirm. Need us sooner? Call <a href='tel:"+MVR.tel+"'>"+MVR.phone+"</a>. 💙");}
+      if(d&&(d.success===true||d.success==="true")){say("✅ You're all set, "+first+"! We've sent your request for "+(/^[aeiou]/i.test(booking.type)?"an":"a")+" <b>"+escHtml(booking.type)+"</b> assessment on <b>"+escHtml(booking.time)+"</b>. Someone from our team will call <b>"+escHtml(booking.phone)+"</b> to confirm. Need us sooner? Call <a href='tel:"+MVR.tel+"'>"+MVR.phone+"</a>. 💙");}
       else{say("I'm sorry — I couldn't send that automatically. Please call us at <a href='tel:"+MVR.tel+"'><b>"+MVR.phone+"</b></a> and we'll get you scheduled right away.");}
     }).catch(function(){flow=null;renderChips(STARTERS);say("I'm sorry — I couldn't send that automatically. Please call us at <a href='tel:"+MVR.tel+"'><b>"+MVR.phone+"</b></a> and we'll get you scheduled right away.");});
   }
   function handleFlow(v){var t=norm(v);
     if(CANCEL_RE.test(t)){flow=null;booking={};say("No problem — I've cancelled that request. Anything else I can help with?");renderChips(STARTERS);return;}
+    if(flow==="type"){
+      if(/tele|video|virtual|online|remote/.test(t)){booking.type="Telehealth";}
+      else if(/in.?person|in.?office|office|on.?site|come in|person/.test(t)){booking.type="In-Person";}
+      else{say("Just to confirm — would you prefer a <b>Telehealth</b> (video) or an <b>In-Person</b> assessment?");renderChips(["Telehealth","In-Person"]);return;}
+      flow="offer1";say("Great — "+(/^[aeiou]/i.test(booking.type)?"an":"a")+" <b>"+booking.type+"</b> assessment. 📅<br>The next available time is <b>"+slot1()+"</b>. Would that work for you?");renderChips(YN);return;
+    }
     if(flow==="offer1"||flow==="offer2"){
       if(NO_RE.test(t)){
         if(flow==="offer1"){flow="offer2";say("No problem. We also have an opening <b>"+slot2()+"</b>. Would that work?");renderChips(YN);}
         else{flow=null;say("No problem at all. Please call our office at <a href='tel:"+MVR.tel+"'><b>"+MVR.phone+"</b></a> ("+MVR.hours+") and our team will find a time that works for you.");renderChips(STARTERS);}
-      }else if(YES_RE.test(t)){booking.time=flow==="offer1"?slot1():slot2();flow="name";say("Perfect — <b>"+booking.time+"</b> it is. To finish, may I get your <b>full name</b>?");renderChips([]);}
+      }else if(YES_RE.test(t)){booking.time=flow==="offer1"?slot1():slot2();flow="name";say("Perfect — <b>"+booking.time+"</b> it is. To finish, may I get your <b>first name</b>?");renderChips([]);}
       else{var w=flow==="offer1"?slot1():slot2();say("Just to confirm — does <b>"+w+"</b> work for you? Please reply <b>yes</b> or <b>no</b>.");}
       return;
     }
-    if(flow==="name"){booking.name=v.trim();flow="phone";say("Thanks, "+escHtml(booking.name.split(" ")[0]||"")+". What's the best <b>phone number</b> to reach you? 📞");return;}
+    if(flow==="name"){booking.name=v.trim().split(/\s+/)[0];flow="phone";say("Thanks, "+escHtml(booking.name||"")+". What's the best <b>phone number</b> to reach you? 📞");return;}
     if(flow==="phone"){if((v.match(/\d/g)||[]).length<7){say("That doesn't look like a complete phone number — could you share a number where we can reach you?");return;}booking.phone=v.trim();flow="reason";say("Got it. And briefly, <b>what would you like help with?</b> (for example: alcohol, opioids, or another concern)");return;}
     if(flow==="reason"){booking.reason=v.trim();submitBooking();return;}
   }
@@ -477,9 +483,23 @@
     if(isSched(v)){startSched();return;}
     reply(v);}
 
-  launcher.onclick=function(){root.classList.toggle("open");if(root.classList.contains("open")&&!started){started=true;add("Hi! 👋 Welcome to <b>Miami Valley Recovery</b>. I can answer quick questions about our outpatient addiction treatment in Dayton, OH. Tap a question or type your own.","bot",false);renderChips(STARTERS);inp.focus();}};
+  function initConvo(){ if(started) return; started=true; add("Hi! 👋 Welcome to <b>Miami Valley Recovery</b>. I can answer quick questions about our outpatient addiction treatment in Dayton, OH. Tap a question or type your own.","bot",false); renderChips(STARTERS); }
+  function openChat(focus){ root.classList.add("open"); initConvo(); if(focus){ try{inp.focus();}catch(e){} } }
+  function closeChat(){ root.classList.remove("open"); }
+  launcher.onclick=function(){ if(root.classList.contains("open")){ closeChat(); } else { openChat(true); } };
   document.getElementById("mvr-send").onclick=function(){send();};
   inp.addEventListener("keydown",function(e){if(e.key==="Enter")send();});
+
+  // Auto-open shortly after the page loads. Opens once per browser visit so it
+  // won't keep re-popping as visitors move between pages; they can close it anytime.
+  (function(){
+    var alreadyOpened=false;
+    try{ alreadyOpened = sessionStorage.getItem("mvrChatAutoOpened")==="1"; }catch(e){}
+    if(!alreadyOpened){
+      try{ sessionStorage.setItem("mvrChatAutoOpened","1"); }catch(e){}
+      setTimeout(function(){ openChat(false); }, 1200);   // 1.2s after load; no focus (avoids popping the mobile keyboard)
+    }
+  })();
 })();
 </script>
 <!-- ============================================================
