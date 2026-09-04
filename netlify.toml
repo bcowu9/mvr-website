@@ -1,50 +1,45 @@
-# Netlify configuration for Miami Valley Recovery
-# This static site has no build step — files are served as-is.
 [build]
-  publish = "."
+  publish = "public"
+  functions = "netlify/functions"
+  command = "echo 'no build step - static site'"
 
-# ---------------------------------------------------------------------------
-# 301 redirects from retired/old URLs to their closest live equivalents.
-# Preserves SEO link equity and stops old backlinks/bookmarks hitting a 404.
-# Netlify evaluates these top-to-bottom; the first match wins, so the specific
-# blog redirects are listed before the /blog/* catch-all.
-# ---------------------------------------------------------------------------
+[functions]
+  node_bundler = "esbuild"
 
-# Old blog-post URLs (old pattern was /blog/slug ; new pattern is /blog-slug.html)
+# Friendly /api/* paths that map to the serverless functions
 [[redirects]]
-  from = "/blog/practices-that-help-you-heal-relationship-with-loved-ones-after-addiction"
-  to = "/blog-healing-relationships-after-addiction.html"
-  status = 301
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
 
+# Clean URLs for the public policy pages, which Twilio's campaign
+# registration requires as links.
 [[redirects]]
-  from = "/blog/how-alcohol-rehab-supports-mental-health-and-emotional-healing"
-  to = "/alcohol-addiction-treatment.html"
-  status = 301
-
-[[redirects]]
-  from = "/blog/medication-assisted-treatment-with-suboxone-and-vivitrol"
-  to = "/medication-assisted-treatment.html"
-  status = 301
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
 
 [[redirects]]
-  from = "/blog/small-wins-that-lead-to-big-progress"
-  to = "/blog-small-wins-during-your-assessment.html"
-  status = 301
+  from = "/sms-terms"
+  to = "/sms-terms.html"
+  status = 200
 
-[[redirects]]
-  from = "/blog/new-mvr-intro-clip"
-  to = "/about.html"
-  status = 301
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Cache-Control = "no-store"
 
-# Catch-all for any remaining old /blog/<slug> URLs (announcement,
-# telemedicine-coming-soon, and any others) -> the blog index.
-[[redirects]]
-  from = "/blog/*"
-  to = "/blog.html"
-  status = 301
+[[headers]]
+  for = "/privacy*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
 
-# Retired generic services page -> homepage (the current services hub).
-[[redirects]]
-  from = "/treatment-services.html"
-  to = "/"
-  status = 301
+[[headers]]
+  for = "/sms-terms*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

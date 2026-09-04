@@ -1,0 +1,16 @@
+{
+  "name": "mvr-text",
+  "version": "1.3.0",
+  "private": true,
+  "description": "Miami Valley Recovery - SMS broadcast and one-to-one messaging console",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node test/verify.mjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
