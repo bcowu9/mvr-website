@@ -25,6 +25,11 @@
   to = "/sms-terms.html"
   status = 200
 
+[[redirects]]
+  from = "/sms-consent-form"
+  to = "/sms-consent-form.html"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -41,5 +46,10 @@
 
 [[headers]]
   for = "/sms-terms*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/sms-consent-form*"
   [headers.values]
     Cache-Control = "public, max-age=3600"
